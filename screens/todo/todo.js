@@ -17,16 +17,21 @@ function ToDo({tags}) {
       setWords(text.trim().split(" "));
       if(words.length>0){
         let result = tags.filter(tag=>tag.toLowerCase()===words[words.length-1].toLowerCase())
-        // console.log("result->",result)
-        // console.log("words->",words)
+        console.log("words->",words[words.length-1])
+        console.log("text->",text[0])
         setMatch(match=>{
           if( !match.includes(...result)){
             return [...match,...result]
+          }else if(!text.includes(words[words.length-1])){
+            return [...match.filter(wrd=>wrd.toLowerCase()!==words[words.length-1].toLowerCase())]
           }
           return [...match]
         })
         
       }
+      match.map(mtc=>{
+        console.log("mtc",mtc)
+      })
     }
     // console.log(match)
   return (
